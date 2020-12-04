@@ -35,7 +35,7 @@ pipeline {
         }        
          stage('Stage 3') {
             environment {
-                PORT = 80
+                PORT = 8081
             }
             steps {
                 echo 'install dependencies' 

@@ -6,7 +6,7 @@ const app = require('../server');
 describe('GET /', function () {
   it('responds with home page', function (done) {
     //specify the url to be intercepted
-    nock("http://events-internal-service.events:8081")
+    nock("http://localhost:8082")
       //define the method to be intercepted
       .get('/events')
       //respond with a OK and the specified JSON response
@@ -26,7 +26,7 @@ describe('GET /', function () {
         if (err) {
           return done(err);
         }
-        chai.assert.isTrue(res.text.includes("<h1>Welcome to</h1>"));
+        chai.assert.isTrue(res.text.includes("<h1>Welcome to "));
         return done();
       });
 
@@ -35,7 +35,7 @@ describe('GET /', function () {
 
   it('should display page when the backend is down', function (done) {
     //specify the url to be intercepted
-    nock("http://events-internal-service.events:8081")
+    nock("http://localhost:8082")
       //define the method to be intercepted
       .get('/events')
       //respond with an error
@@ -62,7 +62,7 @@ describe('POST /event', function () {
   it('adds an event', function (done) {
   const data = { title: 'test event', description: 'even cooler test', id: 4321, location: 'Some Test Place', likes: 0 };
     //specify the url to be intercepted
-    nock("http://events-internal-service.events:8081")
+    nock("http://localhost:8082")
       //define the method to be intercepted
       .post('/event')
       //respond with a OK and the specified JSON response
@@ -97,7 +97,7 @@ describe('POST /event/like', function () {
   it('likes an event', function (done) {
   const data = { id: 1234 };
     //specify the url to be intercepted
-    nock("http://events-internal-service.events:8081")
+    nock("http://localhost:8082")
       //define the method to be intercepted
       .put('/event/like/1234')
       //respond with a OK and the specified JSON response
@@ -129,7 +129,7 @@ describe('POST /event/dislike', function () {
   it('dis-likes an event', function (done) {
   const data = { id: 1234 };
     //specify the url to be intercepted
-    nock("http://events-internal-service.events:8081")
+    nock("http://localhost:8082")
       //define the method to be intercepted
       .put('/event/dislike/1234')
       //respond with a OK and the specified JSON response
