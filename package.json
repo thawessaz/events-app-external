@@ -4,8 +4,8 @@
   "description": "Sample Events App NodeJS Web Server",
   "main": "server.js",
   "scripts": {
-    "start": "SERVER=http://localhost:8082 node server.js",
-    "test": "SERVER=http://localhost:8082 nyc mocha --exit"
+    "start": "SERVER=http://events-internal-service.events:8081 node server.js",
+    "test": "SERVER=http://events-internal-service.events:8081 nyc mocha --exit"
   },
   "keywords": [],
   "author": "",
